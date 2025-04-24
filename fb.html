@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Red's Restaurant - FB Style</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .cover {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .profile-section {
+      padding: 20px;
+      position: relative;
+    }
+
+    .profile-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid white;
+      position: absolute;
+      top: -40px;
+      left: 20px;
+    }
+
+    .name {
+      margin-left: 110px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .handle {
+      margin-left: 110px;
+      color: gray;
+      font-size: 14px;
+    }
+
+    .post {
+      padding: 20px;
+      border-top: 1px solid #ccc;
+    }
+
+    .post-info {
+      font-size: 14px;
+      color: gray;
+    }
+
+    .post img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .reactions {
+      margin-top: 10px;
+    }
+
+    .like-btn {
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .comment-box {
+      margin-top: 15px;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+      background-color: #42b72a;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .comments-list {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .comment {
+      background: #f0f0f0;
+      padding: 8px 12px;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <!-- Cover Photo -->
+  <img src="tru.jpg" alt="Cover Photo" class="cover">
+
+  <!-- Profile -->
+  <div class="profile-section">
+    <img src="bg.jpg" alt="Profile Picture" class="profile-pic">
+    <div class="name">Red's Restaurant</div>
+    <div class="handle">@red.s.restaurant</div>
+  </div>
+
+  <!-- Post -->
+  <div class="post">
+    <div class="post-info">Red's Restaurant · Just now</div>
+    <img src="bicol.jpg" alt="Delicious Dish">
+
+    <div class="reactions">
+      <button class="like-btn" onclick="likePost()">Like (<span id="like-count">0</span>)</button>
+    </div>
+
+    <div class="comment-box">
+      <textarea id="commentInput" placeholder="Write a comment..."></textarea>
+      <button class="submit-btn" onclick="addComment()">Comment</button>
+    </div>
+
+    <div class="comments-list" id="commentsList">
+      <!-- Comments will appear here -->
+    </div>
+  </div>
+</div>
+
+<script>
+  let likeCount = 0;
+
+  function likePost() {
+    likeCount++;
+    document.getElementById('like-count').textContent = likeCount;
+  }
+
+  function addComment() {
+    const input = document.getElementById('commentInput');
+    const comment = input.value.trim();
+    if (comment !== "") {
+      const commentDiv = document.createElement('div');
+      commentDiv.className = "comment";
+      commentDiv.textContent = comment;
+      document.getElementById('commentsList').appendChild(commentDiv);
+      input.value = "";
+    }
+  }
+</script>
+
+</body>
+</html>
